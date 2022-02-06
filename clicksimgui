@@ -2,6 +2,7 @@ getgenv().AutoTap = false;
 getgenv().AutoMulti = false;
 getgenv().AutoSell = false;
 getgenv().AutoReb = false;
+getgenv().AutoSReb = false;
 
 LocalPlayerName = game.Players.LocalPlayer.Name
 Playerhead = game.Players.LocalPlayer.Character.Head
@@ -182,6 +183,15 @@ function AutoReb()
     end)
 end
 
+function AutoSReb()
+    spawn(function()
+        while getgenv().AutoSReb == true do
+            game:GetService("ReplicatedStorage").RebirthUpgrade.SRebirthU1:FireServer()
+            wait(0.8)
+        end
+    end)
+end
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 local colors = {
@@ -230,6 +240,15 @@ Section:NewToggle("Auto Rebirth", "Automatically rebirths for you", function(sta
         AutoReb();
     else
         getgenv().AutoReb = false
+    end
+end)
+
+Section:NewToggle("Auto Super Rebirth", "Automatically S-rebirths for you", function(state)
+    if state then
+        getgenv().AutoSReb = true
+        AutoSReb();
+    else
+        getgenv().AutoSReb = false
     end
 end)
 
