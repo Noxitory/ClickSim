@@ -1,0 +1,275 @@
+getgenv().AutoTap = false;
+getgenv().AutoMulti = false;
+getgenv().AutoSell = false;
+getgenv().AutoReb = false;
+
+LocalPlayerName = game.Players.LocalPlayer.Name
+Playerhead = game.Players.LocalPlayer.Character.Head
+Sellpart = game:GetService("Workspace").Islands.VipWorld["Sell#VIP"]
+Player = game.Players.LocalPlayer
+PlayerC = game.Players.LocalPlayer.Character.HumanoidRootPart
+RebiSet = 0
+
+function CheckCash()
+    if Player.leaderstats.Coins.Value > 100 then
+        Mult = 'MultiUpgrade1'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 250 then
+        Mult = 'MultiUpgrade2'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 750 then
+        Mult = 'MultiUpgrade3'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 2500 then
+        Mult = 'MultiUpgrade4'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 12500 then
+        Mult = 'MultiUpgrade5'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 35000 then
+        Mult = 'MultiUpgrade6'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 75000 then
+        Mult = 'MultiUpgrade7'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 125000 then
+        Mult = 'MultiUpgrade8'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 500000 then
+        Mult = 'MultiUpgrade9'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 1250000 then
+        Mult = 'MultiUpgrade10'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 2500000 then
+        Mult = 'MultiUpgrade11'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 10000000 then
+        Mult = 'MultiUpgrade12'
+        MultiFolder = 'MultiUpgradesEvent'
+    end
+    if Player.leaderstats.Coins.Value > 50000000 then
+        Mult = 'MultiUpgrade1'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 250000000 then
+        Mult = 'MultiUpgrade2'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 1000000000 then
+        Mult = 'MultiUpgrade3'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 5000000000 then
+        Mult = 'MultiUpgrade4'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 25000000000 then
+        Mult = 'MultiUpgrade5'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 125000000000 then
+        Mult = 'MultiUpgrade6'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 1000000000000 then
+        Mult = 'MultiUpgrade7'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 10000000000000 then
+        Mult = 'MultiUpgrade8'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 25000000000000 then
+        Mult = 'MultiUpgrade9'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 100000000000000 then 
+        Mult = 'MultiUpgrade10'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 500000000000000 then 
+        Mult = 'MultiUpgrade11'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+    if Player.leaderstats.Coins.Value > 2000000000000000 then 
+        Mult = 'MultiUpgrade12'
+        MultiFolder = 'MultiUpgradesEvent2'
+    end
+end
+
+function CheckMults()
+    if Player.leaderstats.Multi.Value > 10000000 then
+        Rebi = 'RebirthU1'
+    end
+    if Player.leaderstats.Multi.Value > 1000000000 then
+        Rebi = 'RebirthU2'
+    end
+    if Player.leaderstats.Multi.Value > 250000000000 then
+        Rebi = 'RebirthU3'
+    end
+    if Player.leaderstats.Multi.Value > 10000000000000 then
+        Rebi = 'RebirthU4'
+    end
+    if Player.leaderstats.Multi.Value > 5000000000000000 then
+        Rebi = 'RebirthU5'
+    end
+    if Player.leaderstats.Multi.Value > 1250000000000000000 then
+        Rebi = 'RebirthU6'
+    end
+    if Player.leaderstats.Multi.Value > 1000000000000000000000 then
+        Rebi = 'RebirthU7'
+    end
+    if Player.leaderstats.Multi.Value > 1000000000000000000000000000 then
+        Rebi = 'RebirthU8'
+    end
+end
+
+function AutoSell()
+    spawn(function()
+        while getgenv().AutoSell == true do
+            firetouchinterest(Playerhead, Sellpart, 0)
+            wait(0.1)
+            firetouchinterest(Playerhead, Sellpart, 0)
+        end
+    end)
+end
+
+function AutoTapper()
+    spawn(function()
+        while getgenv().AutoTap == true do
+            workspace.Players[LocalPlayerName].ClickScript.GetClick:FireServer()
+            wait()
+        end
+    end)
+end
+
+
+function AutoMulti()
+    spawn(function()
+        while getgenv().AutoMulti == true do 
+            CheckCash()
+            game.ReplicatedStorage:FindFirstChild(MultiFolder):FindFirstChild(Mult):FireServer()
+            wait()
+        end
+    end)
+end
+
+function AutoReb()
+    spawn(function()
+        while getgenv().AutoReb == true do
+            if RebiSet == 1 then
+                wait(WaitTime)
+                CheckMults()
+                game:GetService("ReplicatedStorage").RebirthUpgrade:FindFirstChild(Rebi):FireServer()
+            elseif RebiSet == 0 then
+                wait(5)
+                CheckMults()
+                game:GetService("ReplicatedStorage").RebirthUpgrade:FindFirstChild(Rebi):FireServer()
+            end
+        end
+    end)
+end
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local colors = {
+    SchemeColor = Color3.fromRGB(207, 110, 0),
+    Background = Color3.fromRGB(34, 34, 34),
+    Header = Color3.fromRGB(26, 26, 26),
+    TextColor = Color3.fromRGB(255,255,255),
+    ElementColor = Color3.fromRGB(27, 27, 27)
+}
+
+local Window = Library.CreateLib("Clicking Simulator New Titles!", colors)
+
+local Tab = Window:NewTab("Farming")
+local Tab2 = Window:NewTab("Teleports")
+local Tab3 = Window:NewTab("Local")
+local Section = Tab:NewSection("Automatic Actions")
+local Section2 = Tab2:NewSection("Islands")
+local Section3 = Tab3:NewSection("Player")
+
+Section:NewToggle("Auto Click", "Automatically clicks for you", function(state)
+    if state then
+        getgenv().AutoTap = true
+        AutoTapper();
+    else
+        getgenv().AutoTap = false
+    end
+end)
+
+Section:NewToggle("Auto Multi", "Automatically sells clicks for multi", function(state)
+    if state then
+        getgenv().AutoMulti = true
+        AutoMulti();
+    else
+        getgenv().AutoMulti = false
+    end
+end)
+
+Section:NewSlider("Rebirth Wait Time", "Time between each auto-Rebirth", 10, 1, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    WaitTime = s
+    RebiSet = 1
+end)
+
+Section:NewToggle("Auto Rebirth", "Automatically rebirths for you", function(state)
+    if state then
+        getgenv().AutoReb = true
+        AutoReb();
+    else
+        getgenv().AutoReb = false
+    end
+end)
+
+Section:NewToggle("Auto Sell", "Automatically sells your clicks", function(state)
+    if state then
+        getgenv().AutoSell = true
+        AutoSell();
+    else
+        getgenv().AutoSell = false
+    end
+end)
+
+Section2:NewButton("Main World", "teleports you to the main world", function()
+    PlayerC.CFrame = CFrame.new(219.901184, 4.99999809, -88.574173, -0.807985127, 6.51340244e-08, 0.589202821, 9.63059108e-08, 1, 2.15201297e-08, -0.589202821, 7.41316626e-08, -0.807985127)
+end)
+
+Section2:NewButton("Grass World", "teleports you to Grass world", function()
+    PlayerC.CFrame = CFrame.new(985.216797, 440.599915, 23.3549595, 0.999993563, -2.67863083e-08, 0.00359285786, 2.67819704e-08, 1, 1.25542332e-09, -0.00359285786, -1.15919141e-09, 0.999993563)
+end)
+
+Section2:NewButton("Slime World", "teleports you to Slime world", function()
+    PlayerC.CFrame = CFrame.new(985.088318, 440.599915, -486.441193, 0.999998569, 1.22613404e-08, -0.00168921589, -1.22574724e-08, 1, 2.30038566e-09, 0.00168921589, -2.27967689e-09, 0.999998569)
+end)
+
+Section2:NewButton("Winter World", "teleports you to Winter world", function()
+    PlayerC.CFrame = CFrame.new(952.491333, 431.588501, -1198.302, -0.889389038, -4.04766443e-09, -0.457151175, -1.06868081e-09, 1, -6.77498369e-09, 0.457151175, -5.53704727e-09, -0.889389038)
+end)
+
+Section2:NewButton("Robotic World", "teleports you to Robotic world", function()
+    PlayerC.CFrame = CFrame.new(-304.827545, 444.199921, -1188.93372, 0.999815345, -2.82179204e-08, -0.019216083, 2.72428711e-08, 1, -5.10031271e-08, 0.019216083, 5.04702093e-08, 0.999815345)
+end)
+
+Section2:NewButton("VIP World", "teleports you to VIP world", function()
+    PlayerC.CFrame = CFrame.new(1003.98962, 444.199585, 492.276367, 0.932941675, 4.95038321e-08, 0.360027581, -6.37255582e-08, 1, 2.76323195e-08, -0.360027581, -4.87223026e-08, 0.932941675)
+end)
+
+Section3:NewSlider("Player WalkSpeed", "how fast you walk; 16 default", 60, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+Section3:NewButton("Inf Yield", "gives you infinite yield admin", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
